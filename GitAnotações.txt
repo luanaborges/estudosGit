@@ -1,0 +1,134 @@
+https://www.youtube.com/watch?v=Fhd8OKIDQ5M&index=5&list=PLInBAd9OZCzzHBJjLFZzRl6DgUmOeG3H0
+Livro de git na web: https://git-scm.com/book/pt-br/v1/Primeiros-passos-Configura%C3%A7%C3%A3o-Inicial-do-Git
+
+Git: sistema de controle de versão distribuido. Repositório, máquina do tempo. Mantém as versões no repositório, e também nas estações de trabalho, o que agiliza. Quando uma nova estação baixar, vai ter todas as versões antigas.
+Trabalha com projetos em 3 estágios: 
+	1 - Working directory: diretório na sua máquina onde está o projeto. Esse diretório é criado quando você vai lá no git e faz um clone do projeto pra trabalhar na sua máquina. Depois de salvo os arquivos, e dá um comando "git add .", que manda os arquivos pra uma "sala de espera":
+	2 - Staging area: onde os arquivos que você modificou ficam antes de você enviar pro repositório. Depois de tudo adicionado, dá um comando "git commit" que faz com que os arquivos subam para o repositório principal do git:
+	3 - Git Directory: repositório final e principal do projeto (onde eu peguei incialmente pra iniciar o trabalho)
+
+Em search: digita "git bash", botão direito e clica em propriedades, e em "Iniciar em" você coloca o caminho que vc quer que seja o caminho base do git, que apareça sempre!
+
+Configuração básica para começar a trabalhar:
+Site do git:
+1 - Faz download e instala
+2 - Abre o terminal "git bash"
+3 - Digita: git config -- global user.name "luanaborges"
+4 - Digita: git config user.email luanaborges26@gmail.com
+
+-------------------------------------------------------------------------------------------------------
+
+COMANDOS BÁSICOS
+
+ls = dir
+cd .. --> volta pro diretório anterior
+cd  --> volta pro diretório raiz do usuário, não é igual do prompt dos que volta de pasta em pasta
+cd nomeDaPasta --> entra na pasta
+clear --> limpa
+pwd --> mostra o diretório que estou
+Copiar texto --> seleciona e clica em shift+insert - aparece o texto lá no prompt!
+
+--------------------------------------------------------------------------------------------------------
+
+Para transformar o diretório atual em um repostiório git:
+$ git init
+
+$ git remote add origin https://github.com/luanaborges/estudosGit.git
+$ git remote -v
+
+Para depois adicionar outro usuário no git (sem o --global):
+$ git config user.name "luanaborges"
+$ git config user.email luanaborges26@gmail.com
+------------------------------------------------------------------------------------------------
+
+--> Para adicionar os arquivos no repositório:
+$ git status: vai aparecer em vermelho o arquivo que não adicionei no git
+$ git add arquivo.extensão: adiciona o arquivo no pacote para ser comitado (no Stage Area)  -- OU:
+	$ git add . : ele vai adicionar tudo 
+	$ git add \nomedapatas selecionar tudo que estiver dentro de determinada pasta
+	$ git add *.txt adiciona todos os arquivos com extensão txt
+	$ git add --ignore-removal <pathspec>: default, ignora os caminhos que vc removeu da sua work tree, caso você tenha deletado arquivos
+	$ git add --all <pathspec>: grava os removidos também
+	$ git rm arquivo.extensao: tira da work tree o arquivo deletado
+$ git status: vai aparecer em verde o arquivo que adicionei no pacote para commit
+$ git commit -m "meu primeiro comit"
+
+
+--> Se quiser pular a parte do "add", sem deixar os arquivos na Staging Area e fazer o commit direto (não dá pra reverter alterações ou pegar os arquivos de volta):
+git commit -a -m "mensagem"
+
+
+--> Depois:
+$ git push -u origin master
+
+
+--> Desfazer alteraçoes no arquivo antes de mandar pra Stage Area,:
+$ git checkout -- <file>: desfaz qualquer alteração e ele não acusa mais que tem coisa pra comitar
+
+
+--> Para verificar alterações do arquivo que está no meu rep local e que ainda não adicionei na Stage Area:
+git diff
+- Geralmente ele mostraa ultima linha em vermelho como removida e depois em verde como adicionada, por causa da edição de texto que quebra linha somente quando dá enter no final dela
+- E depois mostra a linha realmente adicionada em verde
+
+
+--> Pra saber a última modificação e add que está na minha Stage Area:
+git diff --staged
+
+
+--> Log de todos os comits no projeto, desde o início até o dia de hoje:
+git log
+Aparece cada comit e sua chave (que pode ser usada se eu quiser voltar aquela versão)
+
+
+--> Log mostrando todas as alterações:
+git log -p
+- é com paginação, vc tem que dar "enter" pra ir acompanhando linha por linha, e no final aparede "END"
+- pra dizer quantos comits quer vizualizar: git log -p -1 (pode ser -2, -n)
+- pra mostrar só o código do comit e o arquivo: git log -pretty=oneline
+
+
+--> Para ver alterações de forma mais visual: git gui, gitk
+
+
+--> letra "q": volta pro terminal pra poder digitar novos comandos
+
+
+--> Editar o comit que fiz, juntando alterações no comit que já foi feito. você pode alterar tantos os dados como a mensagem original (ele muda a chave do comit, mas não cria um novo comit, simplesmente adicionou alterações ou arquivos que eu tinha esquecido): 
+git add .
+git comit -amend -m "Mensagem do comit original (edicao)" 
+
+
+--> Pra tirar um arquivo da Stage Area: git reset HEAD arquivo.extensao (se der git status, ele volta pro repositorio local com cor vermelha)
+
+
+--> Para ignorar arquivos:
+gitignore: para o git ignorar o arquivo se eu não quiser colocar no repositório central, se eu não quiser controlar versão. Botão direito dentro do meu repositório local (pasta), new file, com o nome ".gitignore". Edita esse arquivo, e dentro dele coloca em cada linha os arquivos que vc quer ignorar, incluindo o gitignore: 
+.gitignore
+luana.txt
+pasta/
+coringas
+
+----------------------------------------------------------------------------------
+
+TAGS 
+É uma etiqueta, um ponto de atalho pra determinado status do sistema. Geralmente utilizam as tags pra criar marcações nas versões diferentes do sistema. Ex: versão 1.0, versão 1.1, versão 1.2... Assim vc tem uma forma facilitada de reverter o status do seu sistema (com data e hora específica).
+A tag é sempre criada com o seu comit atual, no local onde vc está trabalhando agora com o seu controle de versão.
+
+- Listar as tags: git tag
+- Criar tag: git tag -a v1.0 -m "Versao 1.0" (o "-a" serve pra criar uma tag anotada, quem criou, data e hora)
+- Criar tag pra um comit antigo: 
+	1 - Primeiro mostrar todos os comits do sistema: git log -pretty=oneline 
+	2 - git tag -a v0.0 chaveAlfanumericaDeVersao -m "Versao 1.0"
+- Ver mais detalhes da tag: git show v0.0
+- Trocar de tag, estou na v1.0 e quero trocar (como apontar pra um ponteiro): git checkout v0.0
+- Voltar pra mastar: git checkout master
+- Deletar uma tag: git tag -d v0.0
+
+------------------------------------------------------------------------------------
+
+BRANCHS
+São as ramificações dentro do controle de versão. Permite que você altere uma ramificação sem alterar outra. Por padrão, quando é criado um repositório no git, ele cria a branch master. 
+
+Ambiente de produção: instalado no cliente
+
