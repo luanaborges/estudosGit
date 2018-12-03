@@ -131,4 +131,17 @@ BRANCHS
 São as ramificações dentro do controle de versão. Permite que você altere uma ramificação sem alterar outra. Por padrão, quando é criado um repositório no git, ele cria a branch master. 
 
 Ambiente de produção: instalado no cliente
+Ambiente de teste:
+Ambiente de desenvolvimento:
+Ambiente de homologação:
+
+E cada ambiente pode ser um branch diferente.
+
+Criar branch (sendo que estou na master):
+- git branch teste (enter)
+- git checkout teste --> fazer transição dos meus arquivos pro ambiente de teste, colocando o meu work directory no branch de teste
+
+Criar branch e já fazer a troca:
+- git checkout -b teste
+
 
