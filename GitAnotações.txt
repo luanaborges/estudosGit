@@ -144,4 +144,18 @@ Criar branch (sendo que estou na master):
 Criar branch e já fazer a troca:
 - git checkout -b teste
 
+Trocar de branch:
+- git checkout nomeDaBranch
+
+Listar as branchs do meu diretório: - git branch
+
+Implementação dos meus testes da branch "teste" na branch principal (master/produção) - passar as alteraçõe da branch de teste para a master: deve-se entrar na branch principal (destino) e fazer um merge da branch de teste, ou seja, trazer as alterações que você fez na branch de "teste" para a branch "master":
+Estou na master: - git merge 
+* Agora tudo está no ambiente de produção, no local onde tem o sistema finalizado, concluído e que tá rodando no meu cliente
+NOTA: como eu deu um commit das alterações a partir da branch de "teste", quando eu troco pra "master" e faço um merge para trazer as alterações, eu não preciso mais commitar, pois isso já foi feito antes 
+
+Depois do teste NÃO quero mais usar a branch de "teste": - git branch -d teste. 
+
+ 
+
 
