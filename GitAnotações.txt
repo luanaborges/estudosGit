@@ -4,7 +4,7 @@ Livro de git na web: https://git-scm.com/book/pt-br/v1/Primeiros-passos-Configur
 Git: sistema de controle de versão distribuido. Repositório, máquina do tempo. Mantém as versões no repositório, e também nas estações de trabalho, o que agiliza. Quando uma nova estação baixar, vai ter todas as versões antigas.
 Trabalha com projetos em 3 estágios: 
 	1 - Working directory: diretório na sua máquina onde está o projeto. Esse diretório é criado quando você vai lá no git e faz um clone do projeto pra trabalhar na sua máquina. Depois de salvo os arquivos, e dá um comando "git add .", que manda os arquivos pra uma "sala de espera":
-	2 - Staging area: onde os arquivos que você modificou ficam antes de você enviar pro repositório. Depois de tudo adicionado, dá um comando "git commit" que faz com que os arquivos subam para o repositório principal do git:
+	2 - Staging area: "sala de espera", onde os arquivos que você modificou ficam antes de você enviar pro repositório. Depois de tudo adicionado, dá um comando "git commit" que faz com que os arquivos subam para o repositório principal do git:
 	3 - Git Directory: repositório final e principal do projeto (onde eu peguei incialmente pra iniciar o trabalho)
 
 Em search: digita "git bash", botão direito e clica em propriedades, e em "Iniciar em" você coloca o caminho que vc quer que seja o caminho base do git, que apareça sempre!
@@ -15,6 +15,7 @@ Site do git:
 2 - Abre o terminal "git bash"
 3 - Digita: git config -- global user.name "luanaborges"
 4 - Digita: git config user.email luanaborges26@gmail.com
+
 
 -------------------------------------------------------------------------------------------------------
 
@@ -68,7 +69,7 @@ $ git checkout -- <file>: desfaz qualquer alteração e ele não acusa mais que tem
 
 --> Para verificar alterações do arquivo que está no meu rep local e que ainda não adicionei na Stage Area:
 git diff
-- Geralmente ele mostraa ultima linha em vermelho como removida e depois em verde como adicionada, por causa da edição de texto que quebra linha somente quando dá enter no final dela
+- Geralmente ele mostra ultima linha em vermelho como removida e depois em verde como adicionada, por causa da edição de texto que quebra linha somente quando dá enter no final dela
 - E depois mostra a linha realmente adicionada em verde
 
 
@@ -122,7 +123,7 @@ A tag é sempre criada com o seu comit atual, no local onde vc está trabalhando a
 	2 - git tag -a v0.0 chaveAlfanumericaDeVersao -m "Versao 1.0"
 - Ver mais detalhes da tag: git show v0.0
 - Trocar de tag, estou na v1.0 e quero trocar (como apontar pra um ponteiro): git checkout v0.0
-- Voltar pra mastar: git checkout master
+- Voltar pra master: git checkout master
 - Deletar uma tag: git tag -d v0.0
 
 ------------------------------------------------------------------------------------
@@ -152,10 +153,36 @@ Listar as branchs do meu diretório: - git branch
 Implementação dos meus testes da branch "teste" na branch principal (master/produção) - passar as alteraçõe da branch de teste para a master: deve-se entrar na branch principal (destino) e fazer um merge da branch de teste, ou seja, trazer as alterações que você fez na branch de "teste" para a branch "master":
 Estou na master: - git merge 
 * Agora tudo está no ambiente de produção, no local onde tem o sistema finalizado, concluído e que tá rodando no meu cliente
-NOTA: como eu deu um commit das alterações a partir da branch de "teste", quando eu troco pra "master" e faço um merge para trazer as alterações, eu não preciso mais commitar, pois isso já foi feito antes 
+NOTA: como eu dei um commit das alterações a partir da branch de "teste", quando eu troco pra "master" e faço um merge para trazer as alterações, eu não preciso mais commitar, pois isso já foi feito antes 
+* Resolver conflitos: Após um merge, pode dar conflito, pois a outra pessoa pode ter alterado a mesma linha que eu, no nome da branch aparece master|MERGING. Opção: apagar a alteração que não quero e salvar. Fazer um commit e pronto. O nome da branch volta ao normal.
 
 Depois do teste NÃO quero mais usar a branch de "teste": - git branch -d teste. 
 
+Basicamente: 0 - Estou na master; 1 - crio a nova branch e mudo pra ela; 2 - faço alterações nos arquivos; 3 - Add e Commit; 4 - Volto pra master
+
  
+
+----------------------------------------------------------------------------------
+
+--> CHAVE SSH (Secure Shell) DE AUTENTICAÇÃO: dá acesso ao meu computador local pra que ele consiga interagir com a minha conta do GITHUB.
+Eu preciso dizer pro GitHub que o meu computador local pode acessar a minha conta e gerenciar todas as informações dos meus repositórios:
+digita: ssh-keygen (dá enter em tudo, aproximadamente 3 vezes e ele gera a chave e diz onde está o arquivo)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
